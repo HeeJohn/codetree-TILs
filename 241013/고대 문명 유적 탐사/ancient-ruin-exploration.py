@@ -149,7 +149,8 @@ def solution() :
         while True :
             q = deque(max_place.trace)
             max_place.trace = []
-
+            if not wall:
+                break  # wall이 비어 있으면 반복 종료
             while q :
                 y, x =  q.popleft()
                 max_place.cell[y][x] = wall.popleft()
