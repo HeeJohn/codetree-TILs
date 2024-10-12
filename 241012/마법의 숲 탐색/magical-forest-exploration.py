@@ -98,17 +98,12 @@ class Map :
                 # 2,3은 아무 데나 o
                 if new_y > 2 and self.is_inbound((new_y, new_x)) and not visited[new_y][new_x]   :
 
-                    if self.map[curr_y][curr_x]  == 1 :
-                        if self.map[new_y][new_x] == 3:
+                    if(self.map[curr_y][curr_x]  == 1 and self.map[new_y][new_x] == 3) or self.map[curr_y][curr_x]  > 1:
                             visited[new_y][new_x] = True
                             deepest = max(deepest, new_y)
                             # print(f"x,y : {x},{y}")
                             q.append((new_y, new_x))
-                    elif self.map[curr_y][curr_x]  > 1 :
-                        visited[new_y][new_x] = True
-                        deepest = max(deepest, new_y)
-                        # print(f"x,y : {x},{y}")
-                        q.append((new_y, new_x))
+
 
         # print(deepest-2)
         return deepest -2 # 첫 행이 1이고, +3 했던 것을 고려
